@@ -2,9 +2,13 @@
 
 Dockerized FastAPI application ready for dev and prd environments.
 
-Includes _pytest_ testing framework.
-
 ## Development
+
+Features:
+
+- __pytest__ testing framework
+- __vscode__ config for coding inside container
+- __precommit__ hooks for linting
 
 Build: 
 
