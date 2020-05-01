@@ -5,8 +5,6 @@ repos:
         -   id: end-of-file-fixer
         -   id: trailing-whitespace
         -   id: check-docstring-first
-        -   id: no-commit-to-branch
-            args: ['--branch', 'master', '--branch', 'develop']
         -   id: requirements-txt-fixer
         -   id: check-ast
         -   id: check-merge-conflict
