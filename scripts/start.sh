@@ -2,7 +2,7 @@
 set -e
 
 export APP_MODULE="api:app"
-export GUNICORN_CONF=/app/scripts/gunicorn_conf.py
+export GUNICORN_CONF=/app/docker/gunicorn_conf.py
 
 . /app/scripts/prestart.sh
 
