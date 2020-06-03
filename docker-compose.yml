@@ -15,3 +15,16 @@ services:
       - "8000:${PORT:-80}"
     volumes:
       - ".:/app"
+  db:
+    container_name: api-db
+    image: postgres:11.7
+    ports:
+      - "5433:5432"
+    environment:
+      - PGTZ=America/Argentina/Buenos_Aires
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_DB=api
+    volumes:
+      - api-db:/var/lib/postgresql/data/
+volumes:
+  api-db:

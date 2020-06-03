@@ -3,7 +3,7 @@
 	"dockerComposeFile": ["../docker-compose.yml"],
 	"service": "api",
 	"workspaceFolder": "/app",
-	"settings": { 
+	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"python.pythonPath": "/usr/local/bin/python3.7",
 		"python.testing.unittestEnabled": false,
