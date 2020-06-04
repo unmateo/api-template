@@ -5,12 +5,12 @@ services:
     container_name: api
     build:
         context: .
-        dockerfile: docker/Dockerfile
+        dockerfile: ./Dockerfile
         args:
-          requirements: /app/docker/requirements/dev.txt
-    command: "/app/scripts/start-reload.sh"
+          requirements: /app/config/requirements/dev.txt
+    command: "/app/source/scripts/start-reload.sh"
     env_file:
-      - "docker/.env"
+      - "config/.env"
     ports:
       - "8000:${PORT:-80}"
     volumes:

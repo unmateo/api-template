@@ -2,8 +2,8 @@
 set -e
 
 export APP_MODULE="api:app"
-export GUNICORN_CONF=/app/docker/gunicorn_conf.py
+export GUNICORN_CONF=/app/config/gunicorn_conf.py
 
-. /app/scripts/prestart.sh
+. /app/source/scripts/prestart.sh
 
 exec gunicorn -k uvicorn.workers.UvicornWorker -c "$GUNICORN_CONF" "$APP_MODULE"

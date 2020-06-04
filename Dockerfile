@@ -14,7 +14,7 @@ RUN pip install --upgrade pip
 COPY . /app
 WORKDIR /app
 
-ARG requirements=/app/docker/requirements/prd.txt
+ARG requirements=/app/config/requirements/prd.txt
 RUN pip install -r ${requirements}
 
-CMD ["/app/scripts/start.sh"]
+CMD ["/app/source/scripts/start.sh"]

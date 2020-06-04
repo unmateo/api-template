@@ -12,7 +12,7 @@ Dockerized FastAPI application ready for dev and prd environments.
 
 Build:
 
-`docker build . -f docker/Dockerfile --no-cache -t api`
+`docker build . --no-cache -t api`
 
 Run:
 
