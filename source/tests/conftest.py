@@ -1,16 +1,16 @@
 from pytest import fixture
 from starlette.testclient import TestClient
 
-from api import app
-from api.config import settings
+from api.app import app
+from api.core.config import settings
+from api.core.database import get_engine
+from api.core.database import get_session
 from api.models.orm.base import BaseORM
-from api.services.database import get_engine
-from api.services.database import get_session
 
 
 @fixture(scope="session")
 def dsn():
-    return "sqlite://///app/source/tests/api_test.db?check_same_thread=False"
+    return "sqlite://///app/source/tests/template-api.db?check_same_thread=False"
 
 
 @fixture()
@@ -33,6 +33,6 @@ def clean_db(renew_db, db):
 
 @fixture()
 def client(dsn, renew_db):
-    settings.dsn = dsn
+    settings.DB_DSN = dsn
     client = TestClient(app)
     return client

@@ -3,10 +3,10 @@ from unittest.mock import patch
 
 from pytest import raises
 
-from api.services.database import get_engine
-from api.services.database import get_maker
-from api.services.database import get_session
-from api.services.database import is_alive
+from api.core.database import get_engine
+from api.core.database import get_maker
+from api.core.database import get_session
+from api.core.database import is_alive
 
 
 def test_engine(dsn):
@@ -25,7 +25,7 @@ def test_session(dsn):
 
 
 def test_session_rollback_on_exception():
-    with patch("api.services.database.get_maker") as maker:
+    with patch("api.core.database.get_maker") as maker:
         session = Mock()
         session.execute.side_effect = [Exception()]
         maker.return_value.return_value = session
@@ -36,7 +36,7 @@ def test_session_rollback_on_exception():
 
 
 def test_session_is_closed():
-    with patch("api.services.database.get_maker") as maker:
+    with patch("api.core.database.get_maker") as maker:
         session = Mock()
         maker.return_value.return_value = session
         with get_session("fake_dsn"):

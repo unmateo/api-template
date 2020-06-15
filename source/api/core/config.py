@@ -1,12 +1,15 @@
 from functools import lru_cache
-from os import getenv
 
 from pydantic import BaseSettings
 
 
 class BaseConfig(BaseSettings):
 
-    dsn: str = getenv("DB_DSN")
+    APP_NAME: str = "app"
+    DB_DSN: str
+    DEBUG: bool = False
+    LOG_LEVEL: str
+    TIMEZONE: str = "UTC"
 
 
 @lru_cache()

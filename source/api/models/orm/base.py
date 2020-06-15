@@ -2,21 +2,24 @@ from uuid import uuid4
 
 from sqlalchemy import Boolean
 from sqlalchemy import Column
-from sqlalchemy import String
+from sqlalchemy import DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
+from api.core.date import now
+from api.models.orm.guid import GUID
+
+
 Base = declarative_base()
-
-
-def generate_id() -> str:
-    return str(uuid4())
 
 
 class BaseORM(Base):
 
     __abstract__ = True
 
-    id = Column(
-        String(), primary_key=True, default=generate_id, unique=True, nullable=False,
-    )
-    deleted = Column(Boolean, default=False)
+    id = Column(GUID, primary_key=True, default=uuid4, unique=True)
+    created_at = Column(DateTime, default=now, nullable=False)
+    updated_at = Column(DateTime, default=now, nullable=False, onupdate=now)
+    deleted = Column(Boolean, default=False, nullable=False)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}<{self.id}>"

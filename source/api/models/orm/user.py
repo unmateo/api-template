@@ -8,4 +8,4 @@ class UserORM(BaseORM):
 
     __tablename__ = "users"
 
-    username = Column(String(), nullable=False)
+    username = Column(String, nullable=False)

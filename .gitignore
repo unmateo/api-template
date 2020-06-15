@@ -1,2 +1,2 @@
 *.pyc
-api_test.db
+*.db

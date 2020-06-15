@@ -2,13 +2,15 @@ version: '3'
 
 services:
   api:
-    container_name: api
+    container_name: template-api
     build:
         context: .
         dockerfile: docker/Dockerfile
         args:
           requirements: /app/docker/requirements/dev.txt
     command: "/app/scripts/start-reload.sh"
+    depends_on:
+      - db
     env_file:
       - "docker/.env"
     ports:
@@ -16,15 +18,14 @@ services:
     volumes:
       - ".:/app"
   db:
-    container_name: api-db
+    container_name: template-api-db
     image: postgres:11.7
     ports:
       - "5433:5432"
     environment:
-      - PGTZ=America/Argentina/Buenos_Aires
       - POSTGRES_HOST_AUTH_METHOD=trust
-      - POSTGRES_DB=api
+      - POSTGRES_DB=template-api
     volumes:
-      - api-db:/var/lib/postgresql/data/
+      - template-api-db:/var/lib/postgresql/data/
 volumes:
-  api-db:
+  template-api-db:
